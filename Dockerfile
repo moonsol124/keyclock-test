@@ -15,8 +15,7 @@ ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
 # Keep the ENTRYPOINT simple, let ENV vars configure Keycloak
 # Use 'start-dev' for testing (HTTP, easier setup)
 # Use 'start' for production (requires proxy/hostname vars)
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
-
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port", "8080", "--http-bind", "0.0.0.0"]
 # Optional: Explicitly expose the port for documentation/clarity
 # Note: EXPOSE doesn't *make* it listen, ENV KC_HTTP_PORT does.
 # Render uses its own Port setting, not directly the EXPOSE instruction.
