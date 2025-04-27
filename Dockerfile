@@ -1,12 +1,13 @@
 # Use a specific version for reproducibility
-FROM quay.io/keycloak/keycloak:24.0.4
+FROM quay.io/keycloak/keycloak:latest AS builder
 
 # Set defaults (better to override these in Render ENV VARS)
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=admin
-
+ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
+ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+# - KEYCLOAK_ADMIN=admin
+#             - KEYCLOAK_ADMIN_PASSWORD=password
 # Configure Keycloak runtime via ENV vars
-ENV KC_HTTP_PORT=10000
+#ENV KC_HTTP_PORT=10000
 # Add other necessary ENV vars here or (preferably) in Render
 # ENV KC_PROXY=edge # Needed if using 'start' command
 # ENV KC_HOSTNAME_URL=https://your-app.onrender.com # Needed if using 'start' command
@@ -19,4 +20,4 @@ ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 # Optional: Explicitly expose the port for documentation/clarity
 # Note: EXPOSE doesn't *make* it listen, ENV KC_HTTP_PORT does.
 # Render uses its own Port setting, not directly the EXPOSE instruction.
-EXPOSE 10000
+EXPOSE 8080
