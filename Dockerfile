@@ -1,9 +1,12 @@
 # Use a specific version for reproducibility
-FROM quay.io/keycloak/keycloak:latest AS builder
+FROM quay.io/keycloak/keycloak:24.0.4
 
 # Set defaults (better to override these in Render ENV VARS)
-ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
-ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+# ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
+# ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+
+ENV KEYCLOAK_ADMIN=admin
+ENV KEYCLOAK_ADMIN_PASSWORD=admin
 # - KEYCLOAK_ADMIN=admin
 #             - KEYCLOAK_ADMIN_PASSWORD=password
 # Configure Keycloak runtime via ENV vars
