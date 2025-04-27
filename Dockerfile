@@ -11,11 +11,12 @@ ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
 # Add other necessary ENV vars here or (preferably) in Render
 # ENV KC_PROXY=edge # Needed if using 'start' command
 # ENV KC_HOSTNAME_URL=https://your-app.onrender.com # Needed if using 'start' command
+ENV KC_HTTP_PORT=10000
 
 # Keep the ENTRYPOINT simple, let ENV vars configure Keycloak
 # Use 'start-dev' for testing (HTTP, easier setup)
 # Use 'start' for production (requires proxy/hostname vars)
-EXPOSE 8080
+EXPOSE 10000
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 # Optional: Explicitly expose the port for documentation/clarity
